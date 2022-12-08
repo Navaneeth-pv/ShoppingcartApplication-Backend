@@ -22,19 +22,17 @@ public class ShoppingcartController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping(path = "/searchproduct", consumes = "application/json", produces = "application/json")
-    public List<ShoppingCart> SearchEmployee(@RequestBody ShoppingCart e) {
-        String name = String.valueOf(e.getName());
-        System.out.println(name);
-        return (List<ShoppingCart>) dao.SearchProduct(e.getName());
-
-    }
-
-    @CrossOrigin(origins = "*")
     @GetMapping("/viewproduct")
     public List<ShoppingCart> viewproduct() {
 
         return (List<ShoppingCart>) dao.findAll();
 
+    }
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/searchproduct", consumes = "application/json", produces = "application/json")
+    public List<ShoppingCart> SearchProduct(@RequestBody ShoppingCart e) {
+        String name = String.valueOf(e.getName());
+        System.out.println(name);
+        return (List<ShoppingCart>) dao.SearchProduct(e.getName());
     }
 }
